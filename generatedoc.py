@@ -1,4 +1,5 @@
 import os
+import sys
 
 function = None
 
@@ -265,8 +266,12 @@ def search_files(path):
     
     return tuple(out)
 
-def main(): 
-    path = "plib"
+def main(args): 
+    try:
+        path = args[1]
+    except:
+        print("Please write path to create doc")
+        return
 
     files = search_files( path )
 
@@ -279,4 +284,6 @@ def main():
         f.close()
 
 if __name__ == '__main__':
-    main()
+    args = sys.argv
+    
+    main(args)
